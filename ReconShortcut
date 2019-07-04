@@ -1,0 +1,29 @@
+Sub ReconShortCut()
+'
+' ReconShortCut Macro
+' Filters unreconciled transactions on bank activity
+'
+' Keyboard Shortcut: Ctrl+Shift+R
+'
+    Range("A1:E2").Select
+    With Selection
+        .HorizontalAlignment = xlGeneral
+        .VerticalAlignment = xlTop
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.UnMerge
+    Columns("B:F").Select
+    Selection.EntireColumn.Hidden = True
+    Columns("H:J").Select
+    Selection.EntireColumn.Hidden = True
+    Columns("M:S").Select
+    Selection.EntireColumn.Hidden = True
+    ActiveSheet.Range("$A$6:$T$37").AutoFilter Field:=1, Criteria1:=RGB(255, _
+        255, 0), Operator:=xlFilterCellColor
+End Sub
